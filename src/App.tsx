@@ -178,7 +178,7 @@ function App() {
       {/* Features Section */}
       <section id="features" className="py-32 bg-black">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-1[6]">
             <Rocket className="h-12 w-12 mx-auto mb-6 text-white" />
             <h2 className="text-4xl font-bold mb-2 text-white">{t.features.title}</h2>
             <p className="text-xl text-gray-400">{t.features.subtitle}</p>
