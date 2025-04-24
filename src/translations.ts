@@ -83,21 +83,21 @@ export const translations: { [key: string]: Translation } = {
       getStarted: "Get Started",
       learnMore: "Learn More",
       stats: {
-        projects: "Tasks Delivered with Impact",
-        team: "Skilled Team Members",
+        projects: "Tasks Delivered with Excellent Impact",
+        team: "Highly Skilled and Efficient Team Members",
         satisfaction: "Satisfaction Rate from Happy Clients",
       },
     },
     about: {
       title: "About Us",
-      description: "TEAMSTAR is a task management app designed for Android and iOS, built with React Native and MongoDB Realm. It offers seamless offline access, allowing users to create, track, and update tasks without an internet connection, syncing automatically when back online. Key features include real-time member monitoring, offline-first functionality, and cross-platform support. TEAMSTAR enhances team productivity and task visibility, ensuring smooth collaboration and progress tracking. 🚀",
+      description: "TEAMSTAR is a task management app designed for Android and iOS, where AI controls the team and tasks, assigning and monitoring progress. It offers seamless offline access, allowing users to create, track, and update tasks without an internet connection, syncing automatically when back online. Key features include real-time member monitoring, offline-first functionality, and cross-platform support. TEAMSTAR enhances team productivity and task visibility, ensuring smooth collaboration and progress tracking. 🚀",
       passion: {
         title: "Passion",
         description: "Fueled by a passion for creating impactful solutions.",
       },
       collaboration: {
         title: "Collaboration",
-        description: " United by a strong spirit of collaboration.",
+        description: " United by a shared commitment to teamwork and progress",
       },
       excellence: {
         title: "Excellence",
@@ -107,8 +107,8 @@ export const translations: { [key: string]: Translation } = {
     features: {
       title: "Key Features",
       subtitle: "that Drive Productivity",
-      mainTitle: "Maximize team efficiency and collaboration with Teamstar, the offline-first task management solution.",
-      description: "Transform the way your team works—maximize efficiency and collaboration with Teamstar!",
+      mainTitle: "Maximize team efficiency and collaboration with TEAMSTAR, the offline-first task management solution.",
+      description: "Transform the way your team works—maximize efficiency and collaboration with TEAMSTAR!",
       items: [
         {
           title: "Effortless Task Management",
@@ -142,7 +142,7 @@ export const translations: { [key: string]: Translation } = {
         },
         {
           title: "Effortless Sync",
-          description: "Your work syncs automatically when you're back online."
+          description: "Your changes sync automatically once you're back online again."
         },
         {
           title: "Optimized Workflows",
@@ -153,6 +153,11 @@ export const translations: { [key: string]: Translation } = {
     aiFeatures: {
       title: "AI-Powered Excellence",
       items: [
+        {
+          title: "API-First Approach",
+          description: "Every TEAMSTAR function is available via API, making it easy to integrate into AI flows and automate everything end-to-end."
+         
+        },
         {
           title: "AI-Managed Tasks",
           description: "Submitted reports are analyzed by AI and instantly turned into actionable tasks — so teams practically manage themselves."
@@ -183,12 +188,12 @@ export const translations: { [key: string]: Translation } = {
     hero: {
       tagline: "Innovation der Zukunft",
       title: "DIE ULTIMATIVE LÖSUNG FÜR DAS AUFGABENMANAGEMENT",
-      subtitle: "Werden Sie Mitglied bei Teamstar und werden Sie Teil einer Revolution im Aufgabenmanagement. Wir definieren Produktivität neu und entwickeln Lösungen, die es Teams ermöglichen, heute und morgen mehr zu erreichen.",
+      subtitle: "Werden Sie Mitglied bei TEAMSTAR und werden Sie Teil einer Revolution im Aufgabenmanagement. Wir definieren Produktivität neu und entwickeln Lösungen, die es Teams ermöglichen, heute und morgen mehr zu erreichen.",
       getStarted: "Loslegen",
       learnMore: "Mehr erfahren",
       stats: {
-        projects: "Abgeschlossene Projekte",
-        team: "Teammitglieder",
+        projects: "Aufgaben mit Exzellentem Impact geliefert",
+        team: "Hochqualifizierte und effiziente Teammitglieder",
         satisfaction: "Kundenzufriedenheit",
       },
     },
@@ -201,7 +206,7 @@ export const translations: { [key: string]: Translation } = {
       },
       collaboration: {
         title: "Zusammenarbeit",
-        description: "Vereint durch einen starken Geist der Zusammenarbeit.",
+        description: "Vereint durch ein gemeinsames Engagement für Teamwork und Fortschritt.",
       },
       excellence: {
         title: "Exzellenz",
@@ -211,8 +216,8 @@ export const translations: { [key: string]: Translation } = {
     features: {
       title: "Hauptfunktionen",
       subtitle: "die die Produktivität steigern",
-      mainTitle: "Maximieren Sie die Effizienz und Zusammenarbeit Ihres Teams mit Teamstar, der Offline-first Aufgabenverwaltungslösung.",
-      description: "Transformieren Sie die Arbeitsweise Ihres Teams—maximieren Sie Effizienz und Zusammenarbeit mit Teamstar!",
+      mainTitle: "Maximieren Sie die Effizienz und Zusammenarbeit Ihres Teams mit TEAMSTAR, der Offline-first Aufgabenverwaltungslösung.",
+      description: "Transformieren Sie die Arbeitsweise Ihres Teams—maximieren Sie Effizienz und Zusammenarbeit mit TEAMSTAR!",
       items: [
         {
           title: "Mühelose Aufgabenverwaltung",
