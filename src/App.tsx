@@ -6,6 +6,7 @@ import {
   Zap, ClipboardList, Eye, Cloud, Smartphone, ChevronLeft, ChevronRight, FileText 
 } from 'lucide-react';
 import { translations } from './translations';
+import { Link } from 'react-router-dom';
 
 interface AnimatedCounterProps {
   end: number;
@@ -201,13 +202,13 @@ function App() {
         </button>
 
         {/* Documentation Button */}
-        <a 
-          href="/docs" 
+        <Link 
+          to="/docs" 
           className="w-full sm:w-auto px-6 sm:px-14 py-3 sm:py-5 rounded-full font-semibold border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 backdrop-blur-sm text-sm sm:text-lg flex items-center justify-center"
         >
           <FileText className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
           Documentation
-        </a>
+        </Link>
       </div>
     </div>
   </div>
