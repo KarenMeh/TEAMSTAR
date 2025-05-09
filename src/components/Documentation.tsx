@@ -64,19 +64,19 @@ const Documentation: React.FC = () => {
                 <li>
                   <a href="#post" className="flex items-center text-gray-600 hover:text-black">
                     <Plus className="h-4 w-4 mr-2" />
-                    POST Routes
+                    POST Methods
                   </a>
                 </li>
                 <li>
                   <a href="#put" className="flex items-center text-gray-600 hover:text-black">
                     <Edit className="h-4 w-4 mr-2" />
-                    PUT Routes
+                    PUT Methods
                   </a>
                 </li>
                 <li>
                   <a href="#patch" className="flex items-center text-gray-600 hover:text-black">
                     <RefreshCw className="h-4 w-4 mr-2" />
-                    PATCH Routes
+                    PATCH Methods
                   </a>
                 </li>
                 <li>
@@ -668,7 +668,7 @@ const Documentation: React.FC = () => {
 
             {/* POST Routes Section */}
             <section id="post" className="space-y-6">
-              <h2 className="text-3xl font-bold text-black">POST Routes</h2>
+              <h2 className="text-3xl font-bold text-black">POST Methods</h2>
               <div className="space-y-8">
                 {/* Create Customer */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
@@ -778,7 +778,7 @@ const Documentation: React.FC = () => {
 
             {/* PUT Routes Section */}
             <section id="put" className="space-y-6">
-              <h2 className="text-3xl font-bold text-black">PUT Routes</h2>
+              <h2 className="text-3xl font-bold text-black">PUT Methods</h2>
               <div className="space-y-8">
                 {/* Update Task */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
@@ -909,7 +909,7 @@ const Documentation: React.FC = () => {
 
             {/* PATCH Routes Section */}
             <section id="patch" className="space-y-6">
-              <h2 className="text-3xl font-bold text-black">PATCH Routes</h2>
+              <h2 className="text-3xl font-bold text-black">PATCH Methods</h2>
               <div className="space-y-8">
                 {/* Change User Role */}
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
