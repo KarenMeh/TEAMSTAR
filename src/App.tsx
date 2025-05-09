@@ -3,19 +3,24 @@ import {
   Star, Users, TrendingUp, Cpu, Smile, Rocket, MessageSquare, 
   Heart, Mail, Phone, MapPin, Github, Linkedin, Twitter, ArrowRight, 
   Hexagon, CheckCircle2, Globe, Wifi, RefreshCw, Users2, Sparkles, 
-  Zap, ClipboardList, Eye, Cloud, Smartphone, ChevronLeft, ChevronRight 
+  Zap, ClipboardList, Eye, Cloud, Smartphone, ChevronLeft, ChevronRight, FileText 
 } from 'lucide-react';
 import { translations } from './translations';
 
+interface AnimatedCounterProps {
+  end: number;
+  duration?: number;
+}
+
 // AnimatedCounter component to handle the animation of numbers
-const AnimatedCounter = ({ end, duration = 2000 }) => {
+const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
   
   useEffect(() => {
-    let startTime = null;
-    let animationFrame;
+    let startTime: number | null = null;
+    let animationFrame: number;
     
-    const animate = (timestamp) => {
+    const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       
@@ -45,8 +50,8 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const t = translations[language];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const aiFeaturesRef = useRef(null);
-  const getstartedRef = useRef(null);
+  const aiFeaturesRef = useRef<HTMLElement | null>(null);
+  const getstartedRef = useRef<HTMLElement | null>(null);
 
 
   
@@ -186,19 +191,23 @@ function App() {
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 w-full">
         {/* Primary CTA */}
-        <button  onClick={() => {
-                  aiFeaturesRef.current?.scrollIntoView({ behavior: 'smooth' });
-                }} className="w-full sm:w-auto group bg-gradient-to-r from-black via-gray-900 to-black text-white px-6 sm:px-14 py-3 sm:py-5 rounded-full font-semibold text-sm sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:brightness-110 flex items-center justify-center space-x-2">
+        <button onClick={() => {
+          if (aiFeaturesRef.current) {
+            aiFeaturesRef.current.scrollIntoView({ behavior: 'smooth' });
+          }
+        }} className="w-full sm:w-auto group bg-gradient-to-r from-black via-gray-900 to-black text-white px-6 sm:px-14 py-3 sm:py-5 rounded-full font-semibold text-sm sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:brightness-110 flex items-center justify-center space-x-2">
           <span>{t.hero.getStarted}</span>
           <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transform group-hover:translate-x-1 transition-transform" />
         </button>
 
-        {/* Secondary CTA */}
-        <button onClick={() => {
-                  getstartedRef.current?.scrollIntoView({ behavior: 'smooth' });
-                }}  className="w-full sm:w-auto px-6 sm:px-14 py-3 sm:py-5 rounded-full font-semibold border border-black/10 text-black hover:bg-black/5 transition-all duration-300 backdrop-blur-sm text-sm sm:text-lg">
-          {t.hero.learnMore}
-        </button>
+        {/* Documentation Button */}
+        <a 
+          href="/docs" 
+          className="w-full sm:w-auto px-6 sm:px-14 py-3 sm:py-5 rounded-full font-semibold border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 backdrop-blur-sm text-sm sm:text-lg flex items-center justify-center"
+        >
+          <FileText className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+          Documentation
+        </a>
       </div>
     </div>
   </div>
@@ -477,7 +486,7 @@ function App() {
       {/* Dots pattern to match other sections */}
       <div className="absolute inset-0 opacity-20">
         <div className="grid grid-cols-12 gap-8 h-full">
-          {Array(48).fill().map((_, i) => (
+          {Array(48).fill(undefined).map((_, i) => (
             <div key={i} className="w-2 h-2 rounded-full bg-black/20 self-center justify-self-center" />
           ))}
         </div>
@@ -534,7 +543,7 @@ function App() {
       {/* Dots pattern to match contact section */}
       <div className="absolute inset-0 opacity-20">
         <div className="grid grid-cols-12 gap-8 h-full">
-          {Array(48).fill().map((_, i) => (
+          {Array(48).fill(undefined).map((_, i) => (
             <div key={i} className="w-2 h-2 rounded-full bg-black/20 self-center justify-self-center" />
           ))}
         </div>
@@ -587,7 +596,7 @@ function App() {
         {/* Decorative dots pattern */}
         <div className="absolute inset-0 opacity-20">
           <div className="grid grid-cols-12 gap-8 h-full">
-            {Array(48).fill().map((_, i) => (
+            {Array(48).fill(undefined).map((_, i) => (
               <div key={i} className="w-2 h-2 rounded-full bg-black/20 self-center justify-self-center" />
             ))}
           </div>

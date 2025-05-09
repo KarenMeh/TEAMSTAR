@@ -52,6 +52,7 @@ interface Translation {
   };
   aiFeatures: {
     title: string;
+    mainTitle: string;
     items: {
       title: string;
       description: string;
@@ -79,7 +80,7 @@ export const translations: { [key: string]: Translation } = {
     hero: { 
       tagline: "Innovating the Future",
       title: "THE ULTIMATE TASK MANAGEMENT SOLUTION",
-      subtitle: "Join Teamstar and be part of a revolution in task management. We’re redefining productivity and building solutions that empower teams to achieve more, today and tomorrow.",
+      subtitle: "Join Teamstar and be part of a revolution in task management. We're redefining productivity and building solutions that empower teams to achieve more, today and tomorrow.",
       getStarted: "Get Started",
       learnMore: "Learn More",
       stats: {
@@ -152,11 +153,11 @@ export const translations: { [key: string]: Translation } = {
     },
     aiFeatures: {
       title: "AI-Powered Excellence",
+      mainTitle: "Experience the power of artificial intelligence in team management",
       items: [
         {
           title: "API-First Approach",
           description: "Every TEAMSTAR function is available via API, making it easy to integrate into AI flows and automate everything end-to-end."
-         
         },
         {
           title: "AI-Managed Tasks",
@@ -261,6 +262,7 @@ export const translations: { [key: string]: Translation } = {
     },
     aiFeatures: {
       title: "KI-gesteuerte Exzellenz",
+      mainTitle: "Experience the power of artificial intelligence in team management",
       items: [
         {
           title: "KI-verwaltete Aufgaben",
