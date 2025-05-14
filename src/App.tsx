@@ -97,19 +97,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-     <Helmet>
-      <title>TEAMSTAR - Enterprise Task Management Solution</title>
-      <meta name="description" content="TEAMSTAR - Redefining productivity with powerful task management solutions that empower teams to achieve more." />
-      <meta property="og:title" content="TEAMSTAR - Enterprise Task Management Solution" />
-      <meta property="og:description" content="TEAMSTAR - Redefining productivity with powerful task management solutions that empower teams to achieve more." />
-      <meta property="og:image" content="https://teamstar.d3.net/ts.png" />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="TEAMSTAR - Enterprise Task Management Solution" />
-      <meta name="twitter:description" content="TEAMSTAR - Redefining productivity with powerful task management solutions that empower teams to achieve more." />
-      <meta name="twitter:image" content="https://teamstar.d3.net/ts.png" />
-    </Helmet>
       
       {/* Header */}
       <header className="fixed w-full bg-white z-50">
