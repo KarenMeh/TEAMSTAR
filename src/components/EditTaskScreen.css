@@ -1,0 +1,339 @@
+.edit-task-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-task-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.edit-task-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.edit-task-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.edit-task-button {
+  background-color: #4a90e2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-task-button:hover {
+  background-color: #357abd;
+}
+
+.edit-task-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.edit-task-card {
+  max-width: 440px;
+  margin: 36px auto;
+  background: #fafbfc;
+  padding: 32px 22px 24px 22px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  font-family: 'Poppins', Arial, sans-serif;
+  border: 1px solid #e3e8ee;
+}
+
+.edit-task-header {
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 0.2px;
+  color: #222;
+}
+
+.edit-task-section {
+  margin-bottom: 28px;
+}
+
+.edit-task-section-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 12px;
+  letter-spacing: 0.1px;
+}
+
+.edit-task-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.edit-task-form-label {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
+}
+.edit-task-form-input {
+  padding: 9px 12px;
+  border: 1.5px solid #e3e8ee;
+  border-radius: 7px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+  font-family: 'Poppins', Arial, sans-serif;
+  transition: border 0.18s;
+}
+.edit-task-form-input:focus {
+  border: 1.5px solid #0066FF;
+}
+.edit-task-form-textarea {
+  resize: vertical;
+  min-height: 38px;
+  max-height: 90px;
+}
+
+.edit-task-priority-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-top: 2px;
+  justify-content: center;
+  max-width: 320px;
+}
+.edit-task-priority-btn {
+  border-radius: 18px;
+  padding: 9px 22px 9px 16px;
+  background: #fff;
+  border: 1.5px solid #e3e8ee;
+  color: #222;
+  font-weight: 600;
+  font-size: 1.01rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  outline: none;
+  letter-spacing: 0.05px;
+  min-width: 100px;
+  margin-bottom: 2px;
+  flex: 1 1 40%;
+  max-width: 130px;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.edit-task-priority-btn.selected {
+  border: 2px solid currentColor;
+  background: #f0f6ff;
+  box-shadow: 0 2px 8px rgba(0,102,255,0.07);
+}
+.edit-task-priority-icon {
+  font-size: 1.1em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.edit-task-checklist-header {
+  font-weight: 500;
+  font-size: 1.01rem;
+  margin-bottom: 4px;
+  color: #444;
+}
+.edit-task-checklist-helper {
+  font-size: 0.93rem;
+  color: #aaa;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.edit-task-checklist-input-row {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+.edit-task-checklist-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1.2px solid #e3e8ee;
+  border-radius: 7px;
+  font-size: 0.98rem;
+  outline: none;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fff;
+  transition: border 0.18s;
+}
+.edit-task-checklist-input:focus {
+  border: 1.2px solid #0066FF;
+}
+.edit-task-add-btn {
+  background: #0066FF;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 7px;
+  padding: 0 14px;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.18s;
+  font-family: 'Poppins', Arial, sans-serif;
+  box-shadow: none;
+}
+.edit-task-add-btn:hover {
+  background: #0047B3;
+}
+.edit-task-checklist-list {
+  margin-top: 2px;
+}
+.edit-task-checklist-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e3e8ee;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  transition: background 0.18s;
+}
+.edit-task-checklist-row:hover {
+  background: #f7faff;
+}
+.edit-task-trash-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.edit-task-trash-btn svg {
+  color: #FF0000 !important;
+  transition: color 0.18s;
+}
+.edit-task-trash-btn:hover svg {
+  color: #b30000 !important;
+}
+.edit-task-checklist-text {
+  font-size: 1rem;
+  font-weight: 500;
+  flex: 1;
+  color: #222;
+  cursor: pointer;
+  padding: 3px 0;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.edit-task-checklist-text:hover {
+  background: #eaf2ff;
+}
+.edit-task-checklist-edit-input {
+  flex: 1;
+  padding: 7px 8px;
+  border: 1.2px solid #0066FF;
+  border-radius: 6px;
+  font-size: 0.98rem;
+  outline: none;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fff;
+  margin-right: 6px;
+}
+.edit-task-edit-save-btn {
+  background: #0066FF;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.97rem;
+  font-weight: 500;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.edit-task-edit-save-btn:hover {
+  background: #0047B3;
+}
+.edit-task-edit-cancel-btn {
+  background: #eee;
+  color: #444;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.97rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.edit-task-edit-cancel-btn:hover {
+  background: #ddd;
+}
+.edit-task-require-image-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 8px;
+}
+.edit-task-require-image-label {
+  color: #ff3b3b;
+  font-weight: 600;
+  font-size: 0.93rem;
+  margin-bottom: 2px;
+}
+.edit-task-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #0066FF;
+  border-radius: 5px;
+  border: 1.5px solid #0066FF;
+  margin-top: 2px;
+  box-shadow: none;
+}
+.edit-task-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+.edit-task-save-btn {
+  background: #0066FF;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 24px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.edit-task-save-btn:hover {
+  background: #0047B3;
+}
+.edit-task-cancel-btn {
+  background: #eee;
+  color: #444;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.edit-task-cancel-btn:hover {
+  background: #ddd;
+} 
