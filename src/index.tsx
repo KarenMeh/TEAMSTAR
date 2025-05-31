@@ -17,4 +17,4 @@ root.render(
       </BrowserRouter>
     </TranslationProvider>
   </React.StrictMode>
-);
+); 
