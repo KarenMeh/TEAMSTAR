@@ -5,7 +5,7 @@ import {
   Camera, Hotel, Wrench, Utensils, Building
 } from 'lucide-react';
 import { Link, Routes, Route, useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from './translations.tsx';
 import { SupportedLanguage } from './types/language';
 import { initializeLanguageRouting, getCurrentSubdomain, redirectToLanguageSubdomain } from './utils/languageUtils';
@@ -275,26 +275,8 @@ function App() {
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 bg-gradient-to-br from-white via-gray-50 to-gray-100 overflow-hidden pt-24">
               {/* Background Pattern */}
-              <div className="absolute inset-0 z-0 opacity-30">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
-                  backgroundSize: '40px 40px'
-                }}></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-transparent"></div>
-              </div>
-
-              {/* Background Video with Overlay */}
               <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/80 to-white/70 z-10"></div>
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  className="w-full h-full object-cover opacity-20"
-                >
-                  <source src="/demo-loop.mp4" type="video/mp4" />
-                </video>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-transparent"></div>
               </div>
 
               {/* Decorative Elements */}
@@ -306,26 +288,22 @@ function App() {
                 <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
                   {/* Left Column - Text Content */}
                   <div className="text-center lg:text-left space-y-8">
-                    {/* Title with gradient text effect */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl text-black leading-[1.2]">
                       <span className="font-light tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-600">
                         Never Miss a Task Again – Automate Your Team Management
                       </span>
                     </h1>
 
-                    {/* Subtitle with enhanced typography */}
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
                       Ensure no task is overlooked—especially recurring ones—with real-time oversight and intelligent automations.
                     </p>
 
-                    {/* Supporting sentence */}
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
                       Simplify your team's workflow with automated task assignments, real-time status tracking, and seamless integrations.
                     </p>
 
-                    {/* CTA Buttons with enhanced design */}
+                    {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                      {/* Primary CTA */}
                       <button 
                         onClick={() => {
                           const pricingSection = document.getElementById('pricing');
@@ -339,7 +317,6 @@ function App() {
                         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-black rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </button>
 
-                      {/* Demo Button */}
                       <button 
                         onClick={() => {
                           const demoSection = document.getElementById('demo');
@@ -355,15 +332,11 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Right Column - Phone Preview with Animation */}
+                  {/* Right Column - Phone Preview */}
                   <div className="relative hidden lg:block">
                     <div className="relative w-[280px] mx-auto animate-float">
-                      {/* Phone Frame with enhanced shadow */}
                       <div className="relative aspect-[9/19.5] bg-black rounded-[2.5rem] p-3 shadow-2xl shadow-black/20">
-                        {/* Phone Notch */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-6 bg-black rounded-b-2xl z-10"></div>
-                        
-                        {/* Screen Content with gradient border */}
                         <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-50"></div>
                           <img 
@@ -372,12 +345,8 @@ function App() {
                             className="w-full h-full object-cover"
                           />
                         </div>
-
-                        {/* Decorative Elements */}
                         <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-[2.5rem] opacity-20 blur-xl -z-10"></div>
                       </div>
-
-                      {/* Floating Elements */}
                       <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full blur-md animate-pulse"></div>
                       <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-purple-500/20 rounded-full blur-md animate-pulse"></div>
                     </div>
@@ -414,9 +383,10 @@ function App() {
                     <video 
                       controls
                       className="w-full h-full object-cover"
-                      poster="/video-thumbnail.jpg"
+                      poster="/preview.png"
+                      preload="auto"
                     >
-                      <source src="/demo-video.mp4" type="video/mp4" />
+                      <source src="/videos/teamstar.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -1114,4 +1084,11 @@ function App() {
   );
 }
 
-export default App;
+// Wrap the App component with HelmetProvider
+export default function AppWithHelmet() {
+  return (
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  );
+}
