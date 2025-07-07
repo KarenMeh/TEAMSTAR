@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { 
-  Star, TrendingUp, Cpu, Mail, Phone, MapPin, CheckCircle2, 
+  Star, TrendingUp, Cpu, CheckCircle2, 
   Users2, Eye, ChevronLeft, ChevronRight, Shield, Link2, 
   Camera, Hotel, Wrench, Utensils, Building
 } from 'lucide-react';
@@ -18,6 +18,13 @@ function App() {
   const aiFeaturesRef = useRef<HTMLElement | null>(null);
   const getstartedRef = useRef<HTMLElement | null>(null);
   const location = useLocation();
+
+  // Contact form state
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
 
   // Initialize language routing only once when the app starts
   useEffect(() => {
@@ -49,24 +56,24 @@ function App() {
 
   const slides = [
     {
-      url: "/1.jpg",
-      title: "Authentication Portal"
+      url: "/11.jpg",
+      title: t('slides.authPortal')
     },
     {
       url: "/2.jpg",
-      title: "Dashboard"
+      title: t('slides.dashboard')
     },
     {
       url: "/3.jpg",
-      title: "Scheduled Task"
+      title: t('slides.scheduledTask')
     },
     {
       url: "/4.jpg",
-      title: "Task Overview"
+      title: t('slides.taskOverview')
     },
     {
       url: "/5.jpg",
-      title: "Create Tasks"
+      title: t('slides.createTasks')
     }
   ];
   
@@ -83,6 +90,16 @@ function App() {
   
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  // Contact form submit handler
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const mailto = `mailto:contact@teamstar.com?subject=${encodeURIComponent(subject || 'Contact from Teamstar Website')}` +
+      `&body=${encodeURIComponent(
+        `First Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\n\n${message}`
+      )}`;
+    window.location.href = mailto;
   };
 
   return (
@@ -111,12 +128,12 @@ function App() {
       
       {/* Header */}
       <header className="fixed w-full bg-white z-50 shadow-sm">
-        <nav className="container mx-auto px-6 py-2">
+        <nav className="container mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center -my-2">
               <Link to="/">
-                <img src="/teamstar.png" alt="TEAMSTAR Logo" className="h-24 w-auto object-contain" />
+                <img src="/teamstar1.png" alt="TEAMSTAR Logo" className="h-14 w-auto object-contain" />
               </Link>
             </div>
 
@@ -158,7 +175,7 @@ function App() {
                   className={`w-8 h-8 rounded-full overflow-hidden transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black/20 ${
                     language === 'en' ? 'ring-2 ring-black' : 'opacity-50 hover:opacity-75'
                   }`}
-                  aria-label="Switch to English"
+                  aria-label={t('aria.switchToEnglish')}
                 >
                   <img src="https://flagcdn.com/w80/gb.png" alt="English" className="w-full h-full object-cover" />
                 </button>
@@ -167,7 +184,7 @@ function App() {
                   className={`w-8 h-8 rounded-full overflow-hidden transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black/20 ${
                     language === 'de' ? 'ring-2 ring-black' : 'opacity-50 hover:opacity-75'
                   }`}
-                  aria-label="Switch to German"
+                  aria-label={t('aria.switchToGerman')}
                 >
                   <img src="https://flagcdn.com/w80/de.png" alt="Deutsch" className="w-full h-full object-cover" />
                 </button>
@@ -179,7 +196,7 @@ function App() {
               <button 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
                 className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black/20"
-                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-label={mobileMenuOpen ? t('aria.closeMenu') : t('aria.openMenu')}
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -245,7 +262,7 @@ function App() {
                   className={`w-8 h-8 rounded-full overflow-hidden transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black/20 ${
                     language === 'en' ? 'ring-2 ring-black' : 'opacity-50 hover:opacity-75'
                   }`}
-                  aria-label="Switch to English"
+                  aria-label={t('aria.switchToEnglish')}
                 >
                   <img src="https://flagcdn.com/w80/gb.png" alt="English" className="w-full h-full object-cover" />
                 </button>
@@ -257,7 +274,7 @@ function App() {
                   className={`w-8 h-8 rounded-full overflow-hidden transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black/20 ${
                     language === 'de' ? 'ring-2 ring-black' : 'opacity-50 hover:opacity-75'
                   }`}
-                  aria-label="Switch to German"
+                  aria-label={t('aria.switchToGerman')}
                 >
                   <img src="https://flagcdn.com/w80/de.png" alt="Deutsch" className="w-full h-full object-cover" />
                 </button>
@@ -290,16 +307,16 @@ function App() {
                   <div className="text-center lg:text-left space-y-8">
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl text-black leading-[1.2]">
                       <span className="font-light tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-600">
-                        Never Miss a Task Again – Automate Your Team Management
+                        {t('hero.mainTitle')}
                       </span>
                     </h1>
 
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                      Ensure no task is overlooked—especially recurring ones—with real-time oversight and intelligent automations.
+                      {t('hero.mainDescription')}
                     </p>
 
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                      Simplify your team's workflow with automated task assignments, real-time status tracking, and seamless integrations.
+                      {t('hero.secondaryDescription')}
                     </p>
 
                     {/* CTA Buttons */}
@@ -340,7 +357,7 @@ function App() {
                         <div className="relative w-full h-full rounded-[1.8rem] overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 opacity-50"></div>
                           <img 
-                            src="/1.jpg" 
+                            src="/11.jpg" 
                             alt="TEAMSTAR Platform Preview" 
                             className="w-full h-full object-cover"
                           />
@@ -372,9 +389,9 @@ function App() {
             <section id="demo" className="py-24 bg-white relative overflow-hidden">
               <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl font-light text-black mb-4">Discover How TEAMSTAR Streamlines Your Team Management</h2>
+                  <h2 className="text-3xl font-light text-black mb-4">{t('demo.title')}</h2>
                   <p className="text-gray-600 max-w-2xl mx-auto">
-                    Watch how TEAMSTAR automates tasks, tracks progress, and enhances team efficiency.
+                    {t('demo.description')}
                   </p>
                 </div>
 
@@ -383,11 +400,11 @@ function App() {
                     <video 
                       controls
                       className="w-full h-full object-cover"
-                      poster="/preview.png"
+                      poster="/preview1.jpg"
                       preload="auto"
                     >
-                      <source src="/videos/teamstar.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
+                      <source src="/videos/teamstar1.mp4" type="video/mp4" />
+                      {t('demo.videoNotSupported')}
                     </video>
                   </div>
                 </div>
@@ -398,9 +415,9 @@ function App() {
             <section id="benefits" ref={aiFeaturesRef} className="py-24 bg-white relative">
               <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl font-light text-black mb-4">Key Benefits</h2>
+                  <h2 className="text-3xl font-light text-black mb-4">{t('benefits.title')}</h2>
                   <p className="text-gray-600 max-w-2xl mx-auto">
-                    Streamline your team's workflow with our essential features
+                    {t('benefits.subtitle')}
                   </p>
                 </div>
                 
@@ -415,9 +432,9 @@ function App() {
                             <CheckCircle2 className="h-5 w-5 text-black" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-medium text-black mb-2">Task Completion Assurance</h3>
+                            <h3 className="text-lg font-medium text-black mb-2">{t('benefits.taskCompletion.title')}</h3>
                             <p className="text-sm text-gray-600">
-                            Guarantee that no task, including recurring duties, is forgotten.                            </p>
+                            {t('benefits.taskCompletion.description')}</p>
                           </div>
                         </div>
                       </div>
@@ -429,9 +446,9 @@ function App() {
                             <Eye className="h-5 w-5 text-black" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-medium text-black mb-2">Real-Time Oversight</h3>
+                            <h3 className="text-lg font-medium text-black mb-2">{t('benefits.realTime.title')}</h3>
                             <p className="text-sm text-gray-600">
-                            Monitor task statuses from anywhere, ensuring transparency and accountability.                            </p>
+                            {t('benefits.realTime.description')}</p>
                           </div>
                         </div>
                       </div>
@@ -443,9 +460,9 @@ function App() {
                             <Cpu className="h-5 w-5 text-black" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-medium text-black mb-2">AI-Powered Assignments</h3>
+                            <h3 className="text-lg font-medium text-black mb-2">{t('benefits.aiAssignments.title')}</h3>
                             <p className="text-sm text-gray-600">
-                            Leverage AI to assign tasks automatically based on real-time data and team availability.                            </p>
+                            {t('benefits.aiAssignments.description')}</p>
                           </div>
                         </div>
                       </div>
@@ -457,9 +474,9 @@ function App() {
                             <Camera className="h-5 w-5 text-black" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-medium text-black mb-2">Photo-Verified Confirmations</h3>
+                            <h3 className="text-lg font-medium text-black mb-2">{t('benefits.photoVerified.title')}</h3>
                             <p className="text-sm text-gray-600">
-                            Enhance trust and accountability by requiring photo evidence upon task completion                            </p>
+                            {t('benefits.photoVerified.description')}</p>
                           </div>
                         </div>
                       </div>
@@ -471,9 +488,9 @@ function App() {
                             <Link2 className="h-5 w-5 text-black" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-medium text-black mb-2">API-First Architecture</h3>
+                            <h3 className="text-lg font-medium text-black mb-2">{t('benefits.apiFirst.title')}</h3>
                             <p className="text-sm text-gray-600">
-                            Seamlessly integrate with automation platforms like n8n, Make, and Zapier. Connect with CRM, POS, ERP systems, and project boards to respond to triggers and automate internal business processes.                            </p>
+                            {t('benefits.apiFirst.description')}</p>
                           </div>
                         </div>
                       </div>
@@ -485,9 +502,9 @@ function App() {
                             <Shield className="h-5 w-5 text-black" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-medium text-black mb-2">Field Service Enablement</h3>
+                            <h3 className="text-lg font-medium text-black mb-2">{t('benefits.fieldService.title')}</h3>
                             <p className="text-sm text-gray-600">
-                            Assign tasks to fieldworkers and collect photo-based task confirmation—ensuring operational visibility, reliable documentation, and full accountability across distributed teams.                            </p>
+                            {t('benefits.fieldService.description')}</p>
                           </div>
                         </div>
                       </div>
@@ -498,10 +515,10 @@ function App() {
                             <Link2 className="h-5 w-5 text-black" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-medium text-black mb-2">GDPR Compliance</h3>
+                            <h3 className="text-lg font-medium text-black mb-2">{t('benefits.gdpr.title')}</h3>
                             <p className="text-sm text-gray-600">
-                            Ensure data protection with local LLMs and servers hosted in Germany.</p>
-                                                      </div>
+                            {t('benefits.gdpr.description')}</p>
+                          </div>
                         </div>
                       </div>
 
@@ -575,7 +592,7 @@ function App() {
                                 className={`h-1.5 rounded-full transition-all ${
                                   index === currentSlide ? 'bg-white w-4' : 'bg-white/50 w-1.5'
                                 }`}
-                                aria-label={`Go to slide ${index + 1}`}
+                                aria-label={`${t('aria.goToSlide')} ${index + 1}`}
                               />
                             ))}
                           </div>
@@ -600,9 +617,9 @@ function App() {
             <section id="use-cases" className="py-24 bg-gray-50 relative">
               <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl font-light text-black mb-4">Use Cases</h2>
+                  <h2 className="text-3xl font-light text-black mb-4">{t('useCases.title')}</h2>
                   <p className="text-gray-600 max-w-2xl mx-auto">
-                    Discover how TEAMSTAR adapts to your industry's unique needs
+                    {t('useCases.subtitle')}
                   </p>
                 </div>
 
@@ -615,9 +632,9 @@ function App() {
                           <Hotel className="h-5 w-5 text-black" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-black mb-2">Hospitality</h3>
+                          <h3 className="text-lg font-medium text-black mb-2">{t('useCases.hospitality.title')}</h3>
                           <p className="text-gray-600 text-sm">
-                          Automate housekeeping tasks post-checkout, ensuring rooms are promptly prepared for new guests.                          </p>
+                          {t('useCases.hospitality.description')}</p>
                         </div>
                       </div>
                     </div>
@@ -629,9 +646,9 @@ function App() {
                           <Wrench className="h-5 w-5 text-black" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-black mb-2">Maintenance</h3>
+                          <h3 className="text-lg font-medium text-black mb-2">{t('useCases.maintenance.title')}</h3>
                           <p className="text-gray-600 text-sm">
-                          When issues like a malfunctioning air conditioning unit are reported, TEAMSTAR automatically assigns the task to the appropriate maintenance team with the correct priority, eliminating the need for manual intervention.                          </p>
+                          {t('useCases.maintenance.description')}</p>
                         </div>
                       </div>
                     </div>
@@ -643,9 +660,9 @@ function App() {
                           <TrendingUp className="h-5 w-5 text-black" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-black mb-2">Sales</h3>
+                          <h3 className="text-lg font-medium text-black mb-2">{t('useCases.sales.title')}</h3>
                           <p className="text-gray-600 text-sm">
-                          Manage your sales team effectively by automating recurring client visits, ensuring consistent customer engagement and strong client relationships.                          </p>
+                          {t('useCases.sales.description')}</p>
                         </div>
                       </div>
                     </div>
@@ -657,9 +674,9 @@ function App() {
                           <Utensils className="h-5 w-5 text-black" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-black mb-2">Gastronomy</h3>
+                          <h3 className="text-lg font-medium text-black mb-2">{t('useCases.gastronomy.title')}</h3>
                           <p className="text-gray-600 text-sm">
-                          Streamline morning opening procedures with automated checklists, ensuring all preparation tasks are completed to maintain service quality.                          </p>
+                          {t('useCases.gastronomy.description')}</p>
                         </div>
                       </div>
                     </div>
@@ -671,9 +688,9 @@ function App() {
                           <Building className="h-5 w-5 text-black" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-black mb-2">Construction</h3>
+                          <h3 className="text-lg font-medium text-black mb-2">{t('useCases.construction.title')}</h3>
                           <p className="text-gray-600 text-sm">
-                          Coordinate your construction teams by assigning daily tasks to specific sites, with the ability to include photo documentation. Easily reallocate teams to different sites as needed, even on short notice, ensuring flexibility and efficient communication.                          </p>
+                          {t('useCases.construction.description')}</p>
                         </div>
                       </div>
                     </div>
@@ -685,9 +702,9 @@ function App() {
                           <Users2 className="h-5 w-5 text-black" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-black mb-2">Field Services</h3>
+                          <h3 className="text-lg font-medium text-black mb-2">{t('useCases.fieldServices.title')}</h3>
                           <p className="text-gray-600 text-sm">
-                          Send tasks directly to your field staff—like maintenance techs or installation teams — and have them document work with photo proof, so nothing critical gets missed and team leader can easily verify job completion.                          </p>
+                          {t('useCases.fieldServices.description')}</p>
                         </div>
                       </div>
                     </div>
@@ -700,9 +717,9 @@ function App() {
             <section id="pricing" className="py-24 bg-white relative">
               <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl font-light text-black mb-4">Pricing</h2>
+                  <h2 className="text-3xl font-light text-black mb-4">{t('pricing.title')}</h2>
                   <p className="text-gray-600 max-w-2xl mx-auto">
-                    Simple, transparent pricing that grows with your business
+                    {t('pricing.subtitle')}
                   </p>
                 </div>
 
@@ -711,44 +728,44 @@ function App() {
                     {/* Free Plan */}
                     <div className="group p-8 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300">
                       <div className="text-center mb-8">
-                        <h3 className="text-xl font-medium text-black mb-4">Free Plan</h3>
+                        <h3 className="text-xl font-medium text-black mb-4">{t('pricing.freePlan.title')}</h3>
                         {/* <div className="text-3xl font-light text-black mb-2">€0</div>
                         <p className="text-gray-600 text-sm">Forever</p> */}
                       </div>
                       <ul className="space-y-4 mb-8">
                         <li className="flex items-center space-x-3 text-sm">
                           <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">Manage up to 3 teams</span>
+                          <span className="text-gray-600">{t('pricing.freePlan.teams')}</span>
                         </li>
                         <li className="flex items-center space-x-3 text-sm">
                           <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">Up to 10 users</span>
+                          <span className="text-gray-600">{t('pricing.freePlan.users')}</span>
                         </li>
                       </ul>
                       <button className="w-full py-3 px-6 rounded-lg border-2 border-black text-black font-medium hover:bg-black hover:text-white transition-all duration-300">
-                        Get Started
+                        {t('pricing.freePlan.button')}
                       </button>
                     </div>
 
                     {/* Pro Plan */}
                     <div className="group p-8 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300">
                       <div className="text-center mb-8">
-                        <h3 className="text-xl font-medium text-black mb-4">Pro Plan</h3>
+                        <h3 className="text-xl font-medium text-black mb-4">{t('pricing.proPlan.title')}</h3>
                         {/* <div className="text-3xl font-light text-black mb-2">Flexible</div>
                         <p className="text-gray-600 text-sm">Pay as you grow</p> */}
                       </div>
                       <ul className="space-y-4 mb-8">
                         <li className="flex items-center space-x-3 text-sm">
                           <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">€5 per additional team per month.</span>
+                          <span className="text-gray-600">{t('pricing.proPlan.teams')}</span>
                         </li>
                         <li className="flex items-center space-x-3 text-sm">
                           <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">€10 per 10 additional users per month.</span>
+                          <span className="text-gray-600">{t('pricing.proPlan.users')}</span>
                         </li>
                       </ul>
                       <button className="w-full py-3 px-6 rounded-lg bg-black text-white font-medium hover:bg-black/90 transition-all duration-300">
-                        Choose Your Plan
+                        {t('pricing.proPlan.button')}
                       </button>
                     </div>
                   </div>
@@ -766,9 +783,9 @@ function App() {
 
               <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                  <h2 className="text-4xl font-light text-black mb-4">Testimonials</h2>
+                  <h2 className="text-4xl font-light text-black mb-4">{t('testimonials.title')}</h2>
                   <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                    Join hundreds of satisfied teams who trust TEAMSTAR for their daily operations
+                    {t('testimonials.subtitle')}
                   </p>
                 </div>
 
@@ -790,13 +807,13 @@ function App() {
                               <Building className="h-6 w-6 text-black" />
                             </div>
                             <div className="ml-4">
-                              <h4 className="text-base font-medium text-black">Max Müller</h4>
-                              <p className="text-sm text-gray-600">Construction Manager</p>
-                              <p className="text-xs text-gray-500 mt-0.5">BauProjekte GmbH</p>
+                              <h4 className="text-base font-medium text-black">{t('testimonials.max.name')}</h4>
+                              <p className="text-sm text-gray-600">{t('testimonials.max.title')}</p>
+                              <p className="text-xs text-gray-500 mt-0.5">{t('testimonials.max.company')}</p>
                             </div>
                           </div>
                           <p className="text-gray-600 leading-relaxed text-base">
-                            "With TEAMSTAR, we've finally brought order to our construction projects. Task management has become significantly easier and less stressful."
+                            {t('testimonials.max.quote')}
                           </p>
                         </div>
                         {/* Rating */}
@@ -824,13 +841,13 @@ function App() {
                               <TrendingUp className="h-6 w-6 text-black" />
                             </div>
                             <div className="ml-4">
-                              <h4 className="text-base font-medium text-black">Harald Nikisch</h4>
-                              <p className="text-sm text-gray-600">Lokalexperten</p>
-                              <p className="text-xs text-gray-500 mt-0.5">Hamburg, Germany</p>
+                              <h4 className="text-base font-medium text-black">{t('testimonials.harald.name')}</h4>
+                              <p className="text-sm text-gray-600">{t('testimonials.harald.title')}</p>
+                              <p className="text-xs text-gray-500 mt-0.5">{t('testimonials.harald.company')}</p>
                             </div>
                           </div>
                           <p className="text-gray-600 leading-relaxed text-base">
-                            "Scheduling client visits has never been easier. TEAMSTAR ensures our sales team stays on track and organized."
+                            {t('testimonials.harald.quote')}
                           </p>
                         </div>
                         {/* Rating */}
@@ -858,13 +875,13 @@ function App() {
                               <Hotel className="h-6 w-6 text-black" />
                             </div>
                             <div className="ml-4">
-                              <h4 className="text-base font-medium text-black">Nopadon Jarutanan</h4>
-                              <p className="text-sm text-gray-600">Facility Manager</p>
-                              <p className="text-xs text-gray-500 mt-0.5">Condotel Chaweng Lakeview</p>
+                              <h4 className="text-base font-medium text-black">{t('testimonials.nopadon.name')}</h4>
+                              <p className="text-sm text-gray-600">{t('testimonials.nopadon.title')}</p>
+                              <p className="text-xs text-gray-500 mt-0.5">{t('testimonials.nopadon.company')}</p>
                             </div>
                           </div>
                           <p className="text-gray-600 leading-relaxed text-base">
-                            "TEAMSTAR has significantly enhanced our team management. Tasks are no longer forgotten, and monitoring is effortless."
+                            {t('testimonials.nopadon.quote')}
                           </p>
                         </div>
                         {/* Rating */}
@@ -884,104 +901,72 @@ function App() {
             <section id="contact" ref={getstartedRef} className="py-24 bg-white relative">
               <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl font-light text-black mb-4">Get in Touch</h2>
+                  <h2 className="text-3xl font-light text-black mb-4">{t('contact.title')}</h2>
                   <p className="text-gray-600 max-w-2xl mx-auto">
-                    Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                    {t('contact.subtitle')}
                   </p>
                 </div>
                 
                 <div className="max-w-5xl mx-auto">
-                  <div className="grid lg:grid-cols-2 gap-8">
-                    {/* Contact Information */}
-                    <div className="group p-6 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300">
-                      <h3 className="text-lg font-medium text-black mb-6">Contact Information</h3>
-                      
-                      <div className="space-y-6">
-                        <div className="flex items-start space-x-4 group/item hover:translate-x-1 transition-all duration-300">
-                          <div className="p-2 rounded-lg bg-black/5 group-hover/item:bg-black/10 transition-colors">
-                            <Mail className="h-5 w-5 text-black" />
-                          </div>
-                          <div>
-                            <h4 className="text-sm font-medium text-black mb-1">Email Us</h4>
-                            <p className="text-sm text-gray-600">contact@teamstar.com</p>
-                            <p className="text-xs text-gray-500 mt-1">We'll respond within 24 hours</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start space-x-4 group/item hover:translate-x-1 transition-all duration-300">
-                          <div className="p-2 rounded-lg bg-black/5 group-hover/item:bg-black/10 transition-colors">
-                            <Phone className="h-5 w-5 text-black" />
-                          </div>
-                          <div>
-                            <h4 className="text-sm font-medium text-black mb-1">Call Us</h4>
-                            <p className="text-sm text-gray-600">+1 (555) 123-4567</p>
-                            <p className="text-xs text-gray-500 mt-1">Mon-Fri from 8am to 6pm</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start space-x-4 group/item hover:translate-x-1 transition-all duration-300">
-                          <div className="p-2 rounded-lg bg-black/5 group-hover/item:bg-black/10 transition-colors">
-                            <MapPin className="h-5 w-5 text-black" />
-                          </div>
-                          <div>
-                            <h4 className="text-sm font-medium text-black mb-1">Visit Us</h4>
-                            <p className="text-sm text-gray-600">123 Star Street, Galaxy City</p>
-                            <p className="text-xs text-gray-500 mt-1">Schedule a meeting at our office</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      
-                    </div>
-
+                  <div className="flex justify-center">
                     {/* Contact Form */}
                     <div className="group p-6 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300">
-                      <h3 className="text-lg font-medium text-black mb-6">Send us a Message</h3>
+                      <h3 className="text-lg font-medium text-black mb-6">{t('contact.form.title')}</h3>
                       
-                      <form className="space-y-4">
+                      <form className="space-y-4" onSubmit={handleContactSubmit}>
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">First Name</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.firstName')}</label>
                             <input
                               type="text"
                               className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                              placeholder="John"
+                              placeholder={t('contact.form.firstNamePlaceholder')}
+                              value={firstName}
+                              onChange={e => setFirstName(e.target.value)}
                             />
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">Last Name</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.lastName')}</label>
                             <input
                               type="text"
                               className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                              placeholder="Doe"
+                              placeholder={t('contact.form.lastNamePlaceholder')}
+                              value={lastName}
+                              onChange={e => setLastName(e.target.value)}
                             />
                           </div>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address</label>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.email')}</label>
                           <input
                             type="email"
                             className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                            placeholder="john@example.com"
+                            placeholder={t('contact.form.emailPlaceholder')}
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                           />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Subject</label>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.subject')}</label>
                           <input
                             type="text"
                             className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                            placeholder="How can we help you?"
+                            placeholder={t('contact.form.subjectPlaceholder')}
+                            value={subject}
+                            onChange={e => setSubject(e.target.value)}
                           />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.message')}</label>
                           <textarea
                             rows={4}
                             className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                            placeholder="Tell us more about your inquiry..."
+                            placeholder={t('contact.form.messagePlaceholder')}
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
                           ></textarea>
                         </div>
 
@@ -989,7 +974,7 @@ function App() {
                           type="submit"
                           className="w-full py-2.5 px-6 rounded-lg bg-black text-white text-sm font-medium transition-all duration-300 hover:bg-black/90"
                         >
-                          Send Message
+                          {t('contact.form.button')}
                         </button>
                       </form>
                     </div>
@@ -1004,55 +989,53 @@ function App() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-100">
         <div className="container mx-auto px-6 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {/* Logo and Description */}
-            <div className="md:col-span-1">
-              <div className="flex flex-col space-y-4">
-                <img src="/teamstar.png" alt="TEAMSTAR Logo" className="h-15 w-32 object-contain" />
-                <div className="flex items-center space-x-2">
-                  <span className="text-gray-600 text-sm">a product of</span>
-                  <a href="https://d3.net" className="hover:opacity-80 transition-opacity">
-                    <img src="/D3.png" alt="D3 Logo" className="h-8 w-auto" />
-                  </a>
-                </div>
+            <div className="md:col-span-1 flex flex-col items-center md:items-start space-y-4">
+              <div className="flex items-center space-x-2 justify-center md:justify-start w-full">
+                <img src="/teamstar1.png" alt="TEAMSTAR Logo" className="h-15 w-32 object-contain" />
+                <span className="text-gray-600 text-sm">{t('footer.productOf')}</span>
+                <a href="https://d3.net" className="hover:opacity-80 transition-opacity">
+                  <img src="/D3.png" alt="D3 Logo" className="h-8 w-auto" />
+                </a>
               </div>
             </div>
 
             {/* Legal Links */}
-            <div className="md:col-span-1">
-              <h4 className="text-sm font-semibold text-gray-900 mb-4">Legal</h4>
-              <ul className="space-y-3">
-                <li>
-                  <a href="/legal-notice" className="text-gray-600 hover:text-black transition-colors text-sm">
-                    Legal Notice
-                  </a>
-                </li>
-                <li>
-                  <a href="/terms" className="text-gray-600 hover:text-black transition-colors text-sm">
-                    Terms and Conditions
-                  </a>
-                </li>
-                <li>
-                  <a href="/privacy" className="text-gray-600 hover:text-black transition-colors text-sm">
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
+            <div className="md:col-span-1 flex flex-col items-center md:items-start">
+              <div className="w-full text-left">
+                <h4 className="text-sm font-semibold text-gray-900 mb-4">{t('footer.legal.title')}</h4>
+                <ul className="space-y-3 gap-4 text-left">
+                  <li>
+                    <a href="/legal-notice" className="text-gray-600 hover:text-black transition-colors text-sm">
+                      {t('footer.legal.notice')}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/terms" className="text-gray-600 hover:text-black transition-colors text-sm">
+                      {t('footer.legal.terms')}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/privacy" className="text-gray-600 hover:text-black transition-colors text-sm">
+                      {t('footer.legal.privacy')}
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-
-            
 
             {/* App Downloads */}
             <div className="md:col-span-1">
-              <h4 className="text-sm font-semibold text-gray-900 mb-4">Download Our App</h4>
-              <div className="grid grid-cols-2 gap-4">
+              <h4 className="text-sm font-semibold text-gray-900 mb-4">{t('footer.download.title')}</h4>
+              <div className="grid grid-cols-2 gap-1">
                 {/* App Store */}
                 <div className="flex flex-col items-center">
                   <div className="w-28 h-28 bg-gray-50 rounded-lg mb-2 flex items-center justify-center">
                     <img src="/appstore.png" alt="App Store QR Code" className="w-20 h-20" />
                   </div>
                   <a href="https://apps.apple.com/app/teamstar" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors text-sm">
-                    App Store
+                    {t('footer.download.appStore')}
                   </a>
                 </div>
 
@@ -1062,7 +1045,7 @@ function App() {
                     <img src="/playstore.png" alt="Google Play QR Code" className="w-20 h-20" />
                   </div>
                   <a href="https://play.google.com/store/apps/details?id=com.teamstar.app" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors text-sm">
-                    Google Play
+                    {t('footer.download.googlePlay')}
                   </a>
                 </div>
               </div>
@@ -1071,11 +1054,10 @@ function App() {
 
           {/* Copyright */}
           <div className="mt-12 pt-8 border-t border-gray-100">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-500 text-sm mb-4 md:mb-0">
-                &copy; 2025 TEAMSTAR. All rights reserved.
+            <div className="flex justify-center items-center">
+              <p className="text-gray-500 text-sm text-center">
+                {t('footer.copyright')}
               </p>
-              
             </div>
           </div>
         </div>
