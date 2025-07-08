@@ -723,49 +723,50 @@ function App() {
                   </p>
                 </div>
 
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-4xl mx-auto">
                   <div className="grid md:grid-cols-2 gap-8">
-                    {/* Free Plan */}
-                    <div className="group p-8 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300">
-                      <div className="text-center mb-8">
-                        <h3 className="text-xl font-medium text-black mb-4">{t('pricing.freePlan.title')}</h3>
-                        {/* <div className="text-3xl font-light text-black mb-2">€0</div>
-                        <p className="text-gray-600 text-sm">Forever</p> */}
+                    {/* Forever Free Plan */}
+                    <div className="group p-8 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300 flex flex-col justify-between">
+                      <div>
+                        <div className="text-center mb-8">
+                          <h3 className="text-xl font-medium text-black mb-4">{t('pricing.freePlan.title')}</h3>
+                        </div>
+                        <ul className="space-y-4 mb-8">
+                          <li className="flex items-center space-x-3 text-sm">
+                            <CheckCircle2 className="h-4 w-4 text-black/60" />
+                            <span className="text-gray-600">{t('pricing.freePlan.users')}</span>
+                          </li>
+                          <li className="flex items-center space-x-3 text-sm">
+                            <CheckCircle2 className="h-4 w-4 text-black/60" />
+                            <span className="text-gray-600">{t('pricing.freePlan.api')}</span>
+                          </li>
+                        </ul>
                       </div>
-                      <ul className="space-y-4 mb-8">
-                        <li className="flex items-center space-x-3 text-sm">
-                          <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">{t('pricing.freePlan.teams')}</span>
-                        </li>
-                        <li className="flex items-center space-x-3 text-sm">
-                          <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">{t('pricing.freePlan.users')}</span>
-                        </li>
-                      </ul>
                       <button className="w-full py-3 px-6 rounded-lg border-2 border-black text-black font-medium hover:bg-black hover:text-white transition-all duration-300">
                         {t('pricing.freePlan.button')}
                       </button>
                     </div>
 
-                    {/* Pro Plan */}
-                    <div className="group p-8 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300">
-                      <div className="text-center mb-8">
-                        <h3 className="text-xl font-medium text-black mb-4">{t('pricing.proPlan.title')}</h3>
-                        {/* <div className="text-3xl font-light text-black mb-2">Flexible</div>
-                        <p className="text-gray-600 text-sm">Pay as you grow</p> */}
+                    {/* Add-ons */}
+                    <div className="group p-8 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300 flex flex-col justify-between">
+                      <div>
+                        <div className="text-center mb-8">
+                          <h3 className="text-xl font-medium text-black mb-4">{t('pricing.addons.title')}</h3>
+                        </div>
+                        <ul className="space-y-4 mb-8">
+                          <li className="flex items-center space-x-3 text-sm">
+                            <CheckCircle2 className="h-4 w-4 text-black/60" />
+                            <span className="text-gray-600">{t('pricing.addons.user')}</span>
+                          </li>
+                          <li className="flex items-center space-x-3 text-sm">
+                            <CheckCircle2 className="h-4 w-4 text-black/60" />
+                            <span className="text-gray-600">{t('pricing.addons.api')}</span>
+                          </li>
+                        </ul>
+                        <p className="text-gray-500 text-xs mb-6">{t('pricing.addons.desc')}</p>
                       </div>
-                      <ul className="space-y-4 mb-8">
-                        <li className="flex items-center space-x-3 text-sm">
-                          <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">{t('pricing.proPlan.teams')}</span>
-                        </li>
-                        <li className="flex items-center space-x-3 text-sm">
-                          <CheckCircle2 className="h-4 w-4 text-black/60" />
-                          <span className="text-gray-600">{t('pricing.proPlan.users')}</span>
-                        </li>
-                      </ul>
                       <button className="w-full py-3 px-6 rounded-lg bg-black text-white font-medium hover:bg-black/90 transition-all duration-300">
-                        {t('pricing.proPlan.button')}
+                        {t('pricing.addons.button')}
                       </button>
                     </div>
                   </div>
@@ -899,7 +900,7 @@ function App() {
 
             {/* Contact Section */}
             <section id="contact" ref={getstartedRef} className="py-24 bg-white relative">
-              <div className="container mx-auto px-6">
+              <div className="w-full px-0">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl font-light text-black mb-4">{t('contact.title')}</h2>
                   <p className="text-gray-600 max-w-2xl mx-auto">
@@ -907,77 +908,75 @@ function App() {
                   </p>
                 </div>
                 
-                <div className="max-w-5xl mx-auto">
-                  <div className="flex justify-center">
-                    {/* Contact Form */}
-                    <div className="group p-6 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300">
-                      <h3 className="text-lg font-medium text-black mb-6">{t('contact.form.title')}</h3>
-                      
-                      <form className="space-y-4" onSubmit={handleContactSubmit}>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.firstName')}</label>
-                            <input
-                              type="text"
-                              className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                              placeholder={t('contact.form.firstNamePlaceholder')}
-                              value={firstName}
-                              onChange={e => setFirstName(e.target.value)}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.lastName')}</label>
-                            <input
-                              type="text"
-                              className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                              placeholder={t('contact.form.lastNamePlaceholder')}
-                              value={lastName}
-                              onChange={e => setLastName(e.target.value)}
-                            />
-                          </div>
-                        </div>
-
+                <div className="w-full flex justify-center">
+                  {/* Contact Form */}
+                  <div className="group p-8 rounded-lg bg-white border border-gray-100 hover:border-black/20 transition-all duration-300 w-full max-w-2xl">
+                    <h3 className="text-lg font-medium text-black mb-6">{t('contact.form.title')}</h3>
+                    
+                    <form className="space-y-4" onSubmit={handleContactSubmit}>
+                      <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.email')}</label>
-                          <input
-                            type="email"
-                            className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                            placeholder={t('contact.form.emailPlaceholder')}
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.subject')}</label>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.firstName')}</label>
                           <input
                             type="text"
                             className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                            placeholder={t('contact.form.subjectPlaceholder')}
-                            value={subject}
-                            onChange={e => setSubject(e.target.value)}
+                            placeholder={t('contact.form.firstNamePlaceholder')}
+                            value={firstName}
+                            onChange={e => setFirstName(e.target.value)}
                           />
                         </div>
-
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.message')}</label>
-                          <textarea
-                            rows={4}
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.lastName')}</label>
+                          <input
+                            type="text"
                             className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
-                            placeholder={t('contact.form.messagePlaceholder')}
-                            value={message}
-                            onChange={e => setMessage(e.target.value)}
-                          ></textarea>
+                            placeholder={t('contact.form.lastNamePlaceholder')}
+                            value={lastName}
+                            onChange={e => setLastName(e.target.value)}
+                          />
                         </div>
+                      </div>
 
-                        <button 
-                          type="submit"
-                          className="w-full py-2.5 px-6 rounded-lg bg-black text-white text-sm font-medium transition-all duration-300 hover:bg-black/90"
-                        >
-                          {t('contact.form.button')}
-                        </button>
-                      </form>
-                    </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.email')}</label>
+                        <input
+                          type="email"
+                          className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
+                          placeholder={t('contact.form.emailPlaceholder')}
+                          value={email}
+                          onChange={e => setEmail(e.target.value)}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.subject')}</label>
+                        <input
+                          type="text"
+                          className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
+                          placeholder={t('contact.form.subjectPlaceholder')}
+                          value={subject}
+                          onChange={e => setSubject(e.target.value)}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">{t('contact.form.message')}</label>
+                        <textarea
+                          rows={4}
+                          className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-black/20 focus:outline-none transition-all duration-300 text-sm text-black placeholder-gray-400"
+                          placeholder={t('contact.form.messagePlaceholder')}
+                          value={message}
+                          onChange={e => setMessage(e.target.value)}
+                        ></textarea>
+                      </div>
+
+                      <button 
+                        type="submit"
+                        className="w-full py-2.5 px-6 rounded-lg bg-black text-white text-sm font-medium transition-all duration-300 hover:bg-black/90"
+                      >
+                        {t('contact.form.button')}
+                      </button>
+                    </form>
                   </div>
                 </div>
               </div>

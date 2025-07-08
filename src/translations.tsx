@@ -59,13 +59,18 @@ export type TranslationKey =
   | 'pricing.title'
   | 'pricing.subtitle'
   | 'pricing.freePlan.title'
-  | 'pricing.freePlan.teams'
   | 'pricing.freePlan.users'
+  | 'pricing.freePlan.api'
   | 'pricing.freePlan.button'
   | 'pricing.proPlan.title'
   | 'pricing.proPlan.teams'
   | 'pricing.proPlan.users'
   | 'pricing.proPlan.button'
+  | 'pricing.addons.title'
+  | 'pricing.addons.user'
+  | 'pricing.addons.api'
+  | 'pricing.addons.desc'
+  | 'pricing.addons.button'
   | 'testimonials.title'
   | 'testimonials.subtitle'
   | 'testimonials.max.name'
@@ -171,14 +176,19 @@ const translations: Record<SupportedLanguage, Translations> = {
     'useCases.fieldServices.description': 'Send tasks directly to your field staff—like maintenance techs or installation teams — and have them document work with photo proof, so nothing critical gets missed and team leader can easily verify job completion.',
     'pricing.title': 'Pricing',
     'pricing.subtitle': 'Simple, transparent pricing that grows with your business',
-    'pricing.freePlan.title': 'Free Plan',
-    'pricing.freePlan.teams': 'Manage up to 3 teams',
-    'pricing.freePlan.users': 'Up to 10 users',
+    'pricing.freePlan.title': 'Forever Free Plan',
+    'pricing.freePlan.users': 'Up to 10 users included',
+    'pricing.freePlan.api': 'Full API access (with limited calls)',
     'pricing.freePlan.button': 'Get Started',
     'pricing.proPlan.title': 'Pro Plan',
     'pricing.proPlan.teams': '€5 per additional team per month.',
     'pricing.proPlan.users': '€10 per 10 additional users per month.',
     'pricing.proPlan.button': 'Choose Your Plan',
+    'pricing.addons.title': 'Add-ons',
+    'pricing.addons.user': 'Each additional user: €5/month',
+    'pricing.addons.api': 'Unlimited API calls: €10/month',
+    'pricing.addons.desc': 'With unlimited API calls, you can use all integrations and automations with no limits or restrictions.',
+    'pricing.addons.button': 'Choose Your Add-ons',
     'testimonials.title': 'Testimonials',
     'testimonials.subtitle': 'Join hundreds of satisfied teams who trust TEAMSTAR for their daily operations',
     'testimonials.max.name': 'Max Müller',
@@ -279,14 +289,19 @@ const translations: Record<SupportedLanguage, Translations> = {
     'useCases.fieldServices.description': 'Senden Sie Aufgaben direkt an Ihr Außendienstpersonal – wie Wartungstechniker oder Montageteams – und lassen Sie sie die Arbeit mit Foto-Nachweisen dokumentieren, damit nichts Wichtiges übersehen wird und Teamleiter die Arbeitserfüllung einfach verifizieren können.',
     'pricing.title': 'Preise',
     'pricing.subtitle': 'Einfache, transparente Preise, die mit Ihrem Unternehmen wachsen',
-    'pricing.freePlan.title': 'Kostenloser Plan',
-    'pricing.freePlan.teams': 'Bis zu 3 Teams verwalten',
-    'pricing.freePlan.users': 'Bis zu 10 Benutzer',
+    'pricing.freePlan.title': 'Forever-Free-Plan',
+    'pricing.freePlan.users': 'Bis zu 10 Nutzer kostenlos',
+    'pricing.freePlan.api': 'Voller API-Zugang (mit Limit bei den Aufrufen)',
     'pricing.freePlan.button': 'Jetzt starten',
     'pricing.proPlan.title': 'Pro-Plan',
     'pricing.proPlan.teams': '€5 pro zusätzliches Team pro Monat.',
     'pricing.proPlan.users': '€10 pro 10 zusätzliche Benutzer pro Monat.',
     'pricing.proPlan.button': 'Plan wählen',
+    'pricing.addons.title': 'Add-ons',
+    'pricing.addons.user': 'Jeder weitere Nutzer: 5\u202f€/Monat',
+    'pricing.addons.api': 'Unlimitierte API-Aufrufe: 10\u202f€/Monat',
+    'pricing.addons.desc': 'Mit unlimitierten API-Aufrufen kannst du alle Integrationen und Automatisierungen grenzenlos nutzen – ohne Einschränkungen.',
+    'pricing.addons.button': 'Add-ons auswählen',
     'testimonials.title': 'Kundenstimmen',
     'testimonials.subtitle': 'Schließen Sie sich Hunderten zufriedener Teams an, die TEAMSTAR für ihre täglichen Abläufe vertrauen',
     'testimonials.max.name': 'Max Müller',
