@@ -109,13 +109,13 @@ function App() {
         <meta name="description" content={t('hero.description')} />
         <meta property="og:title" content={`${t('hero.title')} – ${t('hero.subtitle')}`} />
         <meta property="og:description" content={t('hero.description')} />
-        <meta property="og:image" content="https://teamstar.d3.net/ts.png" />
+        <meta property="og:image" content="https://teamstar.d3.net/web.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${t('hero.title')} – ${t('hero.subtitle')}`} />
         <meta name="twitter:description" content={t('hero.description')} />
-        <meta name="twitter:image" content="https://teamstar.d3.net/ts.png" />
+        <meta name="twitter:image" content="https://teamstar.d3.net/web.png" />
         
         {/* SEO Keywords */}
         <meta name="keywords" content="task management app, team management software, automated task assignment, real-time task tracking, photo-verified task completion, API-first task management, GDPR-compliant team management, hospitality task automation, construction team coordination, sales visit scheduling tool, fieldworker time tracking, field service task management" />
