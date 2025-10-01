@@ -10,6 +10,9 @@ import { useTranslation } from './translations.tsx';
 import { SupportedLanguage } from './types/language';
 import { initializeLanguageRouting, getCurrentSubdomain, redirectToLanguageSubdomain } from './utils/languageUtils';
 import Documentation from './Documentation.tsx';
+import LegalNotice from './LegalNotice.tsx';
+import TermsAndConditions from './TermsAndConditions.tsx';
+import PrivacyPolicy from './PrivacyPolicy.tsx';
 
 function App() {
   const { t, language, setLanguage } = useTranslation();
@@ -287,6 +290,9 @@ function App() {
       {/* Main Content */}
       <Routes>
         <Route path="/docs" element={<Documentation />} />
+        <Route path="/legal-notice" element={<LegalNotice />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/" element={
           <>
             {/* Hero Section */}
@@ -1006,19 +1012,19 @@ function App() {
                 <h4 className="text-sm font-semibold text-gray-900 mb-4">{t('footer.legal.title')}</h4>
                 <ul className="space-y-3 gap-4 text-left">
                   <li>
-                    <a href="/legal-notice" className="text-gray-600 hover:text-black transition-colors text-sm">
+                    <Link to="/legal-notice" className="text-gray-600 hover:text-black transition-colors text-sm">
                       {t('footer.legal.notice')}
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/terms" className="text-gray-600 hover:text-black transition-colors text-sm">
+                    <Link to="/terms" className="text-gray-600 hover:text-black transition-colors text-sm">
                       {t('footer.legal.terms')}
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/privacy" className="text-gray-600 hover:text-black transition-colors text-sm">
+                    <Link to="/privacy" className="text-gray-600 hover:text-black transition-colors text-sm">
                       {t('footer.legal.privacy')}
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
